@@ -1,6 +1,12 @@
 # 📚 Repaso Tracker
 
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-orange.svg)
+
 CLI de repetición espaciada basado en el algoritmo **SM-2**, diseñado para estudiar de forma eficiente y con métricas reales de progreso.
+
+![Demo de Repaso Tracker](assets/demo.gif)
 
 ## ✨ Características
 

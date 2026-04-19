@@ -664,7 +664,7 @@ def cmd_stats():
         right_txt = ""
         for d in range(7):
             fecha = today + timedelta(days=d)
-            label = "Hoy  " if d == 0 else dias_semana[fecha.weekday()]
+            label = "Hoy" if d == 0 else dias_semana[fecha.weekday()]
             n = len(carga.get(d, []))
             bar_len = int(n / max_count * 15) if max_count else 0
             color = "bold red" if d == 0 and n > 0 else "yellow" if n > 3 else "cyan"
