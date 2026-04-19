@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "repaso-tracker"
@@ -17,5 +17,5 @@ dependencies = [
 [project.scripts]
 repaso = "repaso_tracker:app"
 
-[tool.setuptools.packages.find]
-where = ["."]
+[tool.setuptools]
+py-modules = ["repaso_tracker"]
