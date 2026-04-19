@@ -6,8 +6,6 @@
 
 CLI de repetición espaciada basado en el algoritmo **SM-2**, diseñado para estudiar de forma eficiente y con métricas reales de progreso.
 
-![Demo de Repaso Tracker](assets/demo.gif)
-
 ## ✨ Características
 
 - **Algoritmo SM-2 simplificado** con factor de dificultad acumulativo
