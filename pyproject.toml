@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "repaso-tracker"
+version = "1.0.0"
+description = "CLI de repetición espaciada (SM-2) para estudiar con cabeza"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "typer>=0.9",
+    "questionary>=2.0",
+    "rich>=13.0",
+]
+
+[project.scripts]
+repaso = "repaso_tracker:app"
+
+[tool.setuptools.packages.find]
+where = ["."]

@@ -1,0 +1,22 @@
+# Ignorar datos personales
+repaso_data.json
+repaso_data.json.bak
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
