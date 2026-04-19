@@ -38,7 +38,7 @@ app = typer.Typer(help="Tracker de repaso espaciado con CLI interactivo", add_co
 
 _DATA_DIR = os.path.expanduser("~/.local/share/repaso")
 os.makedirs(_DATA_DIR, exist_ok=True)
-DATA_FILE = os.path.join(_DATA_DIR, "repaso_data.json")
+DATA_FILE = os.environ.get("REPASO_DATA_FILE") or os.path.join(_DATA_DIR, "repaso_data.json")
 BAK_FILE  = DATA_FILE + ".bak"
 
 INTERVALS = [1, 7, 21, 45]

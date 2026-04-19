@@ -1,0 +1,76 @@
+{
+  "active": [
+    {
+      "id": "mat_t1", "asig": "Matemáticas", "tema": 1,
+      "study_date": "2026-04-10", "last_date": "2026-04-10",
+      "repasos": 0, "next_date": "2026-04-19",
+      "history": [], "scores": [], "dates": [], "_prev": null
+    },
+    {
+      "id": "mat_t2", "asig": "Matemáticas", "tema": 2,
+      "study_date": "2026-04-01", "last_date": "2026-04-12",
+      "repasos": 2, "next_date": "2026-04-23",
+      "history": ["normal", "dificil"], "scores": [70.0], "dates": ["2026-04-05", "2026-04-12"], "_prev": null
+    },
+    {
+      "id": "mat_t3", "asig": "Matemáticas", "tema": 3,
+      "study_date": "2026-03-10", "last_date": "2026-04-01",
+      "repasos": 3, "next_date": "2026-04-22",
+      "history": ["normal", "facil", "normal"], "scores": [80.0, 90.0], "dates": ["2026-03-11", "2026-03-18", "2026-04-01"], "_prev": null
+    },
+    {
+      "id": "fis_t1", "asig": "Física", "tema": 1,
+      "study_date": "2026-03-01", "last_date": "2026-04-15",
+      "repasos": 4, "next_date": null,
+      "history": ["normal", "normal", "facil", "normal"], "scores": [75.0, 80.0, 95.0], "dates": ["2026-03-02", "2026-03-09", "2026-03-30", "2026-04-15"], "_prev": null
+    },
+    {
+      "id": "fis_t2", "asig": "Física", "tema": 2,
+      "study_date": "2026-04-05", "last_date": "2026-04-05",
+      "repasos": 0, "next_date": "2026-04-19",
+      "history": [], "scores": [], "dates": [], "_prev": null
+    },
+    {
+      "id": "fis_t3", "asig": "Física", "tema": 3,
+      "study_date": "2026-04-08", "last_date": "2026-04-16",
+      "repasos": 2, "next_date": "2026-04-25",
+      "history": ["dificil", "dificil"], "scores": [50.0, 55.0], "dates": ["2026-04-09", "2026-04-16"], "_prev": null
+    },
+    {
+      "id": "his_t1", "asig": "Historia", "tema": 1,
+      "study_date": "2026-03-15", "last_date": "2026-04-05",
+      "repasos": 3, "next_date": "2026-04-26",
+      "history": ["normal", "normal", "facil"], "scores": [85.0, 90.0], "dates": ["2026-03-16", "2026-03-23", "2026-04-05"], "_prev": null
+    },
+    {
+      "id": "his_t2", "asig": "Historia", "tema": 2,
+      "study_date": "2026-03-01", "last_date": "2026-04-10",
+      "repasos": 4, "next_date": null,
+      "history": ["normal", "facil", "facil", "normal"], "scores": [88.0, 92.0, 95.0], "dates": ["2026-03-02", "2026-03-09", "2026-03-30", "2026-04-10"], "_prev": null
+    },
+    {
+      "id": "ing_t1", "asig": "Inglés", "tema": 1,
+      "study_date": "2026-04-12", "last_date": "2026-04-16",
+      "repasos": 1, "next_date": "2026-04-23",
+      "history": ["normal"], "scores": [], "dates": ["2026-04-16"], "_prev": null
+    },
+    {
+      "id": "ing_t2", "asig": "Inglés", "tema": 2,
+      "study_date": "2026-04-14", "last_date": "2026-04-14",
+      "repasos": 0, "next_date": "2026-04-16",
+      "history": [], "scores": [], "dates": [], "_prev": null
+    }
+  ],
+  "archived": [],
+  "meta": {
+    "asigs": {
+      "mat": "Matemáticas",
+      "fis": "Física",
+      "his": "Historia",
+      "ing": "Inglés"
+    },
+    "streak": 3,
+    "last_done_date": "2026-04-19",
+    "last_notify_date": "2026-01-01"
+  }
+}

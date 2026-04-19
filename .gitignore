@@ -2,6 +2,9 @@
 repaso_data.json
 repaso_data.json.bak
 
+# GIF generado (pesado, se sube por separado si se quiere)
+# assets/*.gif  ← descomenta esta línea si no quieres subir el GIF al repo
+
 # Python
 __pycache__/
 *.pyc
