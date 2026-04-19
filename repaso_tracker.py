@@ -304,23 +304,29 @@ def cmd_done(eid: str = typer.Argument(None, help="ID del tema (opcional)")):
             tag = f" ({urgentes} para hoy/atrasados)" if urgentes > 0 else ""
             asig_choices.append(questionary.Choice(f"{asig}{tag}", value=asig))
             
-        selected_asig = questionary.select("Selecciona la asignatura:", choices=asig_choices).ask()
-        if not selected_asig: return
-        
-        tema_choices = []
-        items = asigs_with_due[selected_asig]
-        items.sort(key=lambda x: x[2])
-        for e, nr, d in items:
-            rep = e.get('repasos',0)+1
-            title = f"T{e['tema']:02d} — rep {format_rep(rep)} "
-            if d < 0: title += f"(ATRASADO {abs(d)}d)"
-            elif d == 0: title += "(HOY)"
-            else: title += f"(en {d} días)"
-            
-            tema_choices.append(questionary.Choice(title=title, value=e["id"]))
-            
-        eid = questionary.select("¿Qué repaso has completado?", choices=tema_choices).ask()
-        if not eid: return
+        _BACK = "__back__"
+        back_choice = questionary.Choice("← Atrás", value=_BACK)
+
+        while True:
+            selected_asig = questionary.select("Selecciona la asignatura:", choices=asig_choices).ask()
+            if not selected_asig: return
+
+            tema_choices = []
+            items = asigs_with_due[selected_asig]
+            items.sort(key=lambda x: x[2])
+            for e, nr, d in items:
+                rep = e.get('repasos',0)+1
+                title = f"T{e['tema']:02d} — rep {format_rep(rep)} "
+                if d < 0: title += f"(ATRASADO {abs(d)}d)"
+                elif d == 0: title += "(HOY)"
+                else: title += f"(en {d} días)"
+                tema_choices.append(questionary.Choice(title=title, value=e["id"]))
+
+            selected = questionary.select("¿Qué repaso has completado?", choices=tema_choices + [back_choice]).ask()
+            if not selected: return
+            if selected == _BACK: continue
+            eid = selected
+            break
 
     entry = next((e for e in entries if e["id"] == eid), None)
     if not entry:
@@ -449,14 +455,22 @@ def cmd_history():
     
     asig_choices = [questionary.Choice(f"{asig} ({len(lst)} temas)", asig)
                     for asig, lst in sorted(asigs_with_entries.items())]
-    selected_asig = questionary.select("Selecciona la asignatura:", choices=asig_choices).ask()
-    if not selected_asig: return
-    
-    # Luego el tema
-    tema_choices = [questionary.Choice(f"T{e['tema']:02d} — {e.get('repasos', 0)} repasos", e["id"])
-                    for e in sorted(asigs_with_entries[selected_asig], key=lambda x: x["tema"])]
-    eid = questionary.select("Selecciona el tema:", choices=tema_choices).ask()
-    if not eid: return
+    _BACK = "__back__"
+    back_choice = questionary.Choice("← Atrás", value=_BACK)
+
+    while True:
+        selected_asig = questionary.select("Selecciona la asignatura:", choices=asig_choices).ask()
+        if not selected_asig: return
+
+        # Luego el tema
+        tema_choices = [questionary.Choice(f"T{e['tema']:02d} — {e.get('repasos', 0)} repasos", e["id"])
+                        for e in sorted(asigs_with_entries[selected_asig], key=lambda x: x["tema"])]
+
+        selected = questionary.select("Selecciona el tema:", choices=tema_choices + [back_choice]).ask()
+        if not selected: return
+        if selected == _BACK: continue
+        eid = selected
+        break
     
     entry = next((e for e in entries if e["id"] == eid), None)
     n_rep = entry.get("repasos", 0)
