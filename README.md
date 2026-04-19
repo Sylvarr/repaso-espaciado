@@ -14,23 +14,51 @@ CLI de repetición espaciada basado en el algoritmo **SM-2**, diseñado para est
 - **Undo** del último repaso
 - **Archivado de cursos** para empezar de cero cada año
 
+## 🖥️ Compatibilidad
+
+| Sistema | Estado | Notas |
+|---------|--------|-------|
+| **Linux** | ✅ Completo | Todas las funciones, incluidas notificaciones de escritorio |
+| **macOS** | ✅ Completo | Sin notificaciones de escritorio (`notify-send` no disponible) |
+| **Windows 10+ (Windows Terminal)** | ⚠️ Parcial | Funciona, pero sin notificaciones. Requiere Windows Terminal para ver bien los colores y los símbolos `█░` |
+| **Windows (cmd.exe / PowerShell clásico)** | ❌ No recomendado | Problemas de renderizado con caracteres Unicode y ANSI |
+
+## 📦 Requisitos del sistema
+
+Antes de instalar, asegúrate de tener:
+
+| Herramienta | Versión mínima | Cómo instalar |
+|-------------|----------------|---------------|
+| **Python** | 3.9+ | [python.org](https://www.python.org/downloads/) · `sudo apt install python3` (Debian/Ubuntu) |
+| **pipx** | cualquiera | `sudo apt install pipx` · `brew install pipx` (Mac) · `pip install pipx` (Windows) |
+| **notify-send** *(solo Linux, opcional)* | cualquiera | `sudo apt install libnotify-bin` |
+
+> **¿Qué es pipx?** Es la herramienta recomendada para instalar aplicaciones CLI de Python sin contaminar el Python del sistema. Si no quieres usarla, puedes usar `pip install -e .` dentro de un entorno virtual.
+
 ## 🚀 Instalación
 
-### Requisitos
-- Python 3.9+
-- Linux / macOS (para notificaciones de escritorio en Linux se necesita `notify-send`)
-
-### Instalar
+### Con pipx (recomendado)
 
 ```bash
 git clone https://github.com/TU_USUARIO/repaso-tracker.git
 cd repaso-tracker
+pipx install -e .
+```
+
+### Con pip en un entorno virtual
+
+```bash
+git clone https://github.com/TU_USUARIO/repaso-tracker.git
+cd repaso-tracker
+python3 -m venv .venv
+source .venv/bin/activate      # Linux/Mac
+# .venv\Scripts\activate       # Windows
 pip install -e .
 ```
 
-Después de instalar, el comando `repaso` estará disponible globalmente en tu terminal.
+Después de instalar, el comando `repaso` estará disponible en tu terminal.
 
-> **Nota**: los datos se guardan en `~/.local/share/repaso/repaso_data.json` — fuera del repo, así tu historial es privado.
+> **Nota**: los datos se guardan en `~/.local/share/repaso/repaso_data.json` — fuera del repo, así tu historial es privado y no se sube a GitHub.
 
 ## 📖 Uso
 
