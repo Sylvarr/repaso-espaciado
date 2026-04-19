@@ -693,13 +693,13 @@ def cmd_stats():
             wp_txt = "\n".join(f"[yellow]• {e['asig']} T{e['tema']:02d}[/] ([dim]{c}x difícil[/dim])" for e, c in weak_points[:5])
         else:
             wp_txt = "[green]✓ No hay puntos débiles detectados aún.[/green]"
-        wp_panel = Panel(wp_txt, title="⚠️ Puntos Débiles (Percepción)", border_style="yellow")
+        wp_panel = Panel(wp_txt, title="▼  Puntos Débiles (Percepción)", border_style="yellow")
             
         if risk_points:
             rp_txt = "\n".join(f"[bold red]• {e['asig']} T{e['tema']:02d}[/] ([dim]Media: {avg:.0f}%[/dim])" for e, avg in risk_points[:5])
         else:
             rp_txt = "[green]✓ No hay temas en riesgo real detectados.[/green]"
-        rp_panel = Panel(rp_txt, title="🚨 Temas en Riesgo (Tests < 60%)", border_style="red")
+        rp_panel = Panel(rp_txt, title="✗  Temas en Riesgo (Tests < 60%)", border_style="red")
         
         from rich.console import Group
         from rich.rule import Rule
