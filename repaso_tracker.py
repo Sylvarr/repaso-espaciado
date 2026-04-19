@@ -704,11 +704,10 @@ def cmd_stats():
         from rich.console import Group
         from rich.rule import Rule
 
-        bottom_cols = Columns([wp_panel, rp_panel], expand=True)
-        console.print(Rule("[bold]📊 Dashboard de Repaso[/]", style="cyan"))
+        console.print(Rule("[bold cyan]📊 Dashboard de Repaso[/]", style="cyan"))
         console.print(cols)
-        console.print(bottom_cols)
-        console.print()
+        console.print(wp_panel)
+        console.print(rp_panel)
 
 @app.command(name="subject")
 def cmd_subject():
