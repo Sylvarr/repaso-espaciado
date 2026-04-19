@@ -702,9 +702,13 @@ def cmd_stats():
         rp_panel = Panel(rp_txt, title="🚨 Temas en Riesgo (Tests < 60%)", border_style="red")
         
         from rich.console import Group
-        
+        from rich.rule import Rule
+
         bottom_cols = Columns([wp_panel, rp_panel], expand=True)
-        console.print(Panel(Group(cols, bottom_cols), title="[bold]📊 Dashboard de Repaso[/]", expand=True))
+        console.print(Rule("[bold]📊 Dashboard de Repaso[/]", style="cyan"))
+        console.print(cols)
+        console.print(bottom_cols)
+        console.print()
 
 @app.command(name="subject")
 def cmd_subject():
