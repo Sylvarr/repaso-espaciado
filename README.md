@@ -19,7 +19,7 @@ CLI de repetición espaciada basado en el algoritmo **SM-2**, diseñado para est
 | Sistema | Estado | Notas |
 |---------|--------|-------|
 | **Linux** | ✅ Completo | Todas las funciones, incluidas notificaciones de escritorio |
-| **macOS** | ✅ Completo | Sin notificaciones de escritorio (`notify-send` no disponible) |
+| **macOS** | ✅ Completo | Todas las funciones, incluidas notificaciones nativas vía `osascript` |
 | **Windows 10+ (Windows Terminal)** | ⚠️ Parcial | Funciona, pero sin notificaciones. Requiere Windows Terminal para ver bien los colores y los símbolos `█░` |
 | **Windows (cmd.exe / PowerShell clásico)** | ❌ No recomendado | Problemas de renderizado con caracteres Unicode y ANSI |
 
