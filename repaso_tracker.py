@@ -704,7 +704,7 @@ def cmd_stats():
         from rich.console import Group
         
         bottom_cols = Columns([wp_panel, rp_panel], expand=True)
-        console.print(Panel(Group(cols, bottom_cols), title="[bold]📊 Dashboard de Repaso[/]", expand=False))
+        console.print(Panel(Group(cols, bottom_cols), title="[bold]📊 Dashboard de Repaso[/]", expand=True))
 
 @app.command(name="subject")
 def cmd_subject():
