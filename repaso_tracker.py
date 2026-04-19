@@ -122,9 +122,20 @@ def update_streak(meta):
     return meta
 
 def notify(title, body, urgency="normal"):
+    import platform
+    sistema = platform.system()
     try:
-        subprocess.run(["notify-send", "-u", urgency, "-i", "appointment-soon", title, body], check=False)
-    except FileNotFoundError: pass
+        if sistema == "Linux":
+            subprocess.run(
+                ["notify-send", "-u", urgency, "-i", "appointment-soon", title, body],
+                check=False
+            )
+        elif sistema == "Darwin":  # macOS
+            # osascript está disponible en todos los Mac sin instalar nada
+            script = f'display notification "{body}" with title "{title}"'
+            subprocess.run(["osascript", "-e", script], check=False)
+    except FileNotFoundError:
+        pass  # silencioso si el comando no está disponible
 
 def cprint(text, style=""):
     if RICH: console.print(text, style=style)
