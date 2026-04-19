@@ -40,16 +40,16 @@ Antes de instalar, asegúrate de tener:
 ### Con pipx (recomendado)
 
 ```bash
-git clone https://github.com/TU_USUARIO/repaso-tracker.git
-cd repaso-tracker
+git clone https://github.com/Sylvarr/repaso-espaciado.git
+cd repaso-espaciado
 pipx install -e .
 ```
 
 ### Con pip en un entorno virtual
 
 ```bash
-git clone https://github.com/TU_USUARIO/repaso-tracker.git
-cd repaso-tracker
+git clone https://github.com/Sylvarr/repaso-espaciado.git
+cd repaso-espaciado
 python3 -m venv .venv
 source .venv/bin/activate      # Linux/Mac
 # .venv\Scripts\activate       # Windows
