@@ -75,6 +75,14 @@ def load():
             if done >= len(INTERVALS): e["next_date"] = None
             else: e["next_date"] = add_days(e["last_date"], INTERVALS[done])
             
+    # Normalizar nombres de asignatura: corrige drift de capitalización
+    # comparando en minúsculas contra los valores canónicos de meta
+    canonical = {v.lower(): v for v in meta["asigs"].values()}
+    for e in active:
+        normalized = canonical.get(e.get("asig", "").lower())
+        if normalized and normalized != e["asig"]:
+            e["asig"] = normalized
+
     return active, raw.get("archived", []), meta
 
 def save(entries, archived, meta=None):
