@@ -748,11 +748,39 @@ def cmd_subject():
     elif action == "Añadir/Editar asignatura":
         clave = questionary.text("Clave corta (ej. 'prog'):").ask()
         if not clave: return
+        clave = clave.lower()
+
+        if clave in asigs:
+            nombre_actual = asigs[clave]
+            temas_existentes = [e for e in entries if e["asig"] == nombre_actual]
+            cprint(f"\n  ⚠ La clave '[bold]{clave}[/]' ya existe → [bold]{nombre_actual}[/] ({len(temas_existentes)} temas registrados)", "yellow")
+            if not questionary.confirm(f"¿Quieres cambiar el nombre de '{nombre_actual}'?").ask():
+                cprint("  Cancelado.\n", "dim")
+                return
+
         nombre = questionary.text("Nombre completo (ej. 'Programación'):").ask()
-        if nombre:
-            asigs[clave.lower()] = nombre
-            save(entries, archived, meta)
-            cprint(f"✓ Guardado: {clave} -> {nombre}", "green")
+        if not nombre: return
+
+        nombre_viejo = asigs.get(clave)
+        asigs[clave] = nombre
+
+        if nombre_viejo and nombre_viejo != nombre:
+            temas = [e for e in entries if e["asig"] == nombre_viejo]
+            if temas:
+                accion = questionary.select(
+                    f"Hay {len(temas)} tema(s) registrados como '{nombre_viejo}'. ¿Qué hacemos?",
+                    choices=[
+                        questionary.Choice(f"Actualizar al nuevo nombre '{nombre}'", value="rename"),
+                        questionary.Choice("Dejarlos con el nombre antiguo",           value="keep"),
+                    ]
+                ).ask()
+                if accion == "rename":
+                    for e in temas:
+                        e["asig"] = nombre
+                    cprint(f"  ✓ {len(temas)} tema(s) actualizados a '{nombre}'", "green")
+
+        save(entries, archived, meta)
+        cprint(f"✓ Guardado: {clave} → {nombre}", "green")
     elif action == "Eliminar asignatura":
         clave = questionary.select("Selecciona la asignatura a eliminar:", choices=[questionary.Choice(f"{v} ({k})", k) for k, v in asigs.items()]).ask()
         if clave and questionary.confirm(f"Eliminar '{asigs[clave]}'?").ask():
